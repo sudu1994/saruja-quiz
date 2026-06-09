@@ -31,9 +31,9 @@ function Furigana({ text }) {
     <span>
       {parts.map((p, i) =>
         p.type === 'ruby' ? (
-          <ruby key={i} style={{ rubyAlign: 'center' }}>
+          <ruby key={i} style={{ rubyAlign: "center" }}>
             {p.base}
-            <rt style={{ fontSize: '0.55em', color: '#C04E78', fontWeight: 400 }}>{p.reading}</rt>
+            <rt>{p.reading}</rt>
           </ruby>
         ) : (
           <span key={i}>{p.value}</span>
@@ -269,13 +269,13 @@ export default function App() {
 
   const styles = {
     app: { minHeight: "100vh", background: `linear-gradient(135deg, #FFF0F5 0%, #FDE8F2 50%, #F0E8FF 100%)`, fontFamily: "'Segoe UI', system-ui, sans-serif", padding: "0 0 40px" },
-    header: { background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", borderBottom: `2px solid ${PASTEL.primaryLight}`, padding: "16px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 100 },
+    header: { background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", borderBottom: `2px solid ${PASTEL.primaryLight}`, padding: "10px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 100, flexWrap: "wrap", gap: 8 },
     logo: { display: "flex", alignItems: "center", gap: 10 },
-    logoText: { fontSize: 20, fontWeight: 700, color: PASTEL.primaryDark, letterSpacing: "-0.3px" },
+    logoText: { fontSize: 16, fontWeight: 700, color: PASTEL.primaryDark, letterSpacing: "-0.3px" },
     logoSub: { fontSize: 12, color: PASTEL.textMuted, marginTop: -2 },
-    scoreChip: { background: PASTEL.primaryLight, color: PASTEL.primaryDark, padding: "6px 14px", borderRadius: 20, fontSize: 14, fontWeight: 600 },
-    sheetBtn: { background: PASTEL.primary, color: "#fff", border: "none", borderRadius: 20, padding: "7px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 },
-    iconBtn: (active) => ({ background: active ? PASTEL.primaryDark : PASTEL.primaryLight, color: active ? "#fff" : PASTEL.primaryDark, border: "none", borderRadius: 20, padding: "7px 14px", fontSize: 13, fontWeight: 600, cursor: "pointer" }),
+    scoreChip: { background: PASTEL.primaryLight, color: PASTEL.primaryDark, padding: "5px 10px", borderRadius: 20, fontSize: 12, fontWeight: 600 },
+    sheetBtn: { background: PASTEL.primary, color: "#fff", border: "none", borderRadius: 20, padding: "5px 12px", fontSize: 12, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4 },
+    iconBtn: (active) => ({ background: active ? PASTEL.primaryDark : PASTEL.primaryLight, color: active ? "#fff" : PASTEL.primaryDark, border: "none", borderRadius: 20, padding: "5px 10px", fontSize: 12, fontWeight: 600, cursor: "pointer" }),
     main: { maxWidth: 680, margin: "0 auto", padding: "24px 16px" },
     progressWrap: { marginBottom: 20 },
     progressInfo: { display: "flex", justifyContent: "space-between", fontSize: 13, color: PASTEL.textMuted, marginBottom: 6 },
@@ -283,7 +283,7 @@ export default function App() {
     progressFill: { height: "100%", background: `linear-gradient(90deg, ${PASTEL.primary}, ${PASTEL.primaryDark})`, borderRadius: 8, transition: "width 0.5s ease" },
     card: { background: "#fff", borderRadius: 24, padding: "28px 28px 24px", boxShadow: "0 4px 24px rgba(200,80,130,0.10)", border: `1.5px solid ${PASTEL.primaryLight}`, marginBottom: 16 },
     sectionBadge: (s) => ({ display: "inline-block", background: sectionColor[s] || "#eee", color: PASTEL.primaryDark, padding: "3px 12px", borderRadius: 20, fontSize: 12, fontWeight: 700, marginBottom: 12 }),
-    question: { fontSize: 22, color: PASTEL.text, lineHeight: 1.8, marginBottom: 24, fontWeight: 500 },
+    question: { fontSize: 18, color: PASTEL.text, lineHeight: 3.2, marginBottom: 24, fontWeight: 500 },
     optionBtn: (state) => {
       const base = { width: "100%", textAlign: "left", padding: "14px 18px", borderRadius: 14, fontSize: 16, marginBottom: 10, cursor: state === "idle" ? "pointer" : "default", fontWeight: 500, border: "2px solid", transition: "all 0.2s", display: "flex", alignItems: "center", gap: 12 };
       if (state === "correct") return { ...base, background: PASTEL.correct, borderColor: PASTEL.correctBorder, color: PASTEL.correctText };
@@ -401,6 +401,7 @@ export default function App() {
   // ── Main render ───────────────────────────────────────────────────────────
   return (
     <div style={styles.app}>
+      <style>{`ruby { display: inline ruby; ruby-align: center; } rt { font-size: 0.5em; color: #C04E78; text-align: center; line-height: 1; display: block; }`}</style>
       {/* Header */}
       <div style={styles.header}>
         <div style={styles.logo}>
